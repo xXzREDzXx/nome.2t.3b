@@ -6,59 +6,35 @@ const textoResultado = document.querySelector(".texto-resultado");
 
 const perguntas = [
     {
-        enunciado: "Assim que saiu da escola você se depara com uma escolha, ir para o serviço militar ou deixar quieto e fazer faculdade. Qual a sua escolha?",
+        enunciado: "Assim que saiu da escola você se depara com uma escolha: ir para o serviço militar ou fazer faculdade. Qual a sua escolha?",
         alternativas: [
-            {
-                texto: "Partiu servir!",
-                afirmacao: "Militar. "
-            },
-            {
-                texto: "Vou pra faculdade mesmo..",
-                afirmacao: "Estudante. "
-            }
+            { texto: "Partiu servir!", afirmacao: "Militar." },
+            { texto: "Vou pra faculdade mesmo...", afirmacao: "Estudante." }
         ]
     },
     {
-        enunciado: "Com a escolha, chamada Tomada de Decisão, um profissional da área ira te instruir. No fim de tudo você decide o rumo da sua vida. CLT ou PJ?",
+        enunciado: "Com a escolha feita, um profissional te instrui. No fim, você decide o rumo da sua vida: CLT ou PJ?",
         alternativas: [
-            {
-                texto: "CLT.",
-                afirmacao: "Funcionário. "
-            },
-            {
-                texto: "PJ.",
-                afirmacao: "Empresário. "
-            }
+            { texto: "CLT.", afirmacao: "Funcionário." },
+            { texto: "PJ.", afirmacao: "Empresário." }
         ]
     },
     {
-        enunciado: "Após a escolha, você realizou uma meta. Qual seria essa meta?",
+        enunciado: "Após a escolha, você realiza uma meta. Qual seria essa meta?",
         alternativas: [
-            {
-                texto: "Primeiro milhão, corpo dos sonhos... vida bem sucedida financeiramente.",
-                afirmacao: "Riqueza. "
-            },
-            {
-                texto: "Familia, constituir um lar, uma esposa... vida bem sucedida amorosamente.",
-                afirmacao: "Família. "
-            }
+            { texto: "Primeiro milhão, corpo dos sonhos... vida bem sucedida financeiramente.", afirmacao: "Riqueza." },
+            { texto: "Família, constituir um lar, uma esposa... vida bem sucedida amorosamente.", afirmacao: "Família." }
         ]
     },
     {
         enunciado: "Ao final de tudo, você precisa fazer uma escolha. E agora?",
         alternativas: [
-            {
-                texto: "Deixar sua furtuna para os familiares",
-                afirmacao: "Filhos. "
-            },
-            {
-                texto: "Ajudar a sociedade com seu dinheiro.",
-                afirmacao: "Generosidade. "
-            }
+            { texto: "Deixar sua fortuna para os familiares.", afirmacao: "Filhos." },
+            { texto: "Ajudar a sociedade com seu dinheiro.", afirmacao: "Generosidade." }
         ]
-    },
-    {
-        
+    }
+];
+
 let atual = 0;
 let perguntaAtual;
 let historiaFinal = "";
@@ -70,12 +46,12 @@ function mostraPergunta() {
     }
     perguntaAtual = perguntas[atual];
     caixaPerguntas.textContent = perguntaAtual.enunciado;
-    caixaAlternativas.textContent = "";
+    caixaAlternativas.innerHTML = "";
     mostraAlternativas();
 }
 
-function mostraAlternativas(){
-    for(const alternativa of perguntaAtual.alternativas) {
+function mostraAlternativas() {
+    for (const alternativa of perguntaAtual.alternativas) {
         const botaoAlternativas = document.createElement("button");
         botaoAlternativas.textContent = alternativa.texto;
         botaoAlternativas.addEventListener("click", () => respostaSelecionada(alternativa));
@@ -84,16 +60,15 @@ function mostraAlternativas(){
 }
 
 function respostaSelecionada(opcaoSelecionada) {
-    const afirmacoes = opcaoSelecionada.afirmacao;
-    historiaFinal += afirmacoes + " ";
+    historiaFinal += opcaoSelecionada.afirmacao + " ";
     atual++;
     mostraPergunta();
 }
 
 function mostraResultado() {
     caixaPerguntas.textContent = "Em 2049...";
-    textoResultado.textContent = historiaFinal;
-    caixaAlternativas.textContent = "";
+    textoResultado.textContent = historiaFinal.trim();
+    caixaAlternativas.innerHTML = "";
 }
 
 mostraPergunta();
