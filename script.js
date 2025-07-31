@@ -66,7 +66,7 @@ function respostaSelecionada(opcaoSelecionada) {
 }
 
 function mostraResultado() {
-    caixaPerguntas.textContent = "Em 2049...";
+    caixaPerguntas.textContent = "Gabarito.";
     textoResultado.textContent = historiaFinal.trim();
     caixaAlternativas.innerHTML = "";
 }
