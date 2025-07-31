@@ -66,7 +66,7 @@ function respostaSelecionada(opcaoSelecionada) {
 }
 
 function mostraResultado() {
-    caixaPerguntas.textContent = "Gabarito.";
+    caixaPerguntas.textContent = "Gabarito: ";
     textoResultado.textContent = historiaFinal.trim();
     caixaAlternativas.innerHTML = "";
 }
